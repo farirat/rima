@@ -1,1 +1,1 @@
-urls_map = None
+urls_map = []

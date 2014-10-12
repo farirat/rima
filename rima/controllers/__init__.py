@@ -10,7 +10,7 @@ from rima.exceptions import (
 class BaseController(object):
 
     required_create_fields = []
-    search_fields = []
+    # search_fields = []
     model = None
 
     @classmethod
