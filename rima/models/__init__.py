@@ -1,5 +1,5 @@
-from mondoengine import connect
-from mondoengine.
+from mongoengine import connect
+# from mondoengine.
 
 import datetime
 from uuid import uuid1
@@ -10,12 +10,12 @@ from mongoengine.fields import (
     DictField
 )
 
-from .settings import MONGO_DBNAME
+# from .settings import MONGO_DBNAME
 
-connect(MONGO_DBNAME)
+connect("test_db")
 
 
-class BaseModel(Document):
+class BaseModel(object):
     """
     """
 

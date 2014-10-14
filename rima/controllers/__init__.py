@@ -1,6 +1,6 @@
 import datetime
 
-from rima.utils.validators import validate
+# from rima.utils.validators import validate
 from rima.exceptions import (
     MissingParameterError, ConflictError, ResourceNotFoundError,
     BadParametersError

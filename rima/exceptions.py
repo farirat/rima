@@ -8,7 +8,6 @@ class ResourceNotFoundError(BaseError):
 
     def __init__(self, message=None):
         self.body = {
-            "error_uuid": self.uuid,
             "message": message or "Resource not found"
         }
 
@@ -19,7 +18,6 @@ class BadParametersError(BaseError):
 
     def __init__(self, message=None):
         self.body = {
-            "error_uuid": self.uuid,
             "message": message or "Bad Parameters"
         }
 
@@ -30,7 +28,6 @@ class MissingParameterError(BaseError):
 
     def __init__(self, message=None, missing_params=None):
         self.body = {
-            "error_uuid": self.uuid,
             "message": message or "Missing Parameters Error",
             "missing_params": missing_params
         }
@@ -43,7 +40,6 @@ class MissingRequiredHeader(BaseError):
 
     def __init__(self, message=None):
         self.body = {
-            "error_uuid": self.uuid,
             "message": message or "Missing Required Header"
         }
 
@@ -54,7 +50,6 @@ class ForbiddenError(BaseError):
 
     def __init__(self, message=None):
         self.body = {
-            "error_uuid": self.uuid,
             "message": message or "Forbidden error"
         }
 
@@ -71,7 +66,6 @@ class UnauthorizedError(BaseError):
 
     def __init__(self, message=None):
         self.body = {
-            "error_uuid": self.uuid,
             "message": message or "Unauthorized Error"
         }
 
@@ -82,7 +76,6 @@ class RemoteAPIError(BaseError):
 
     def __init__(self, message=None, remote_error=None, remote_message=None, sent_params={}):
         self.body = {
-            "error_uuid": self.uuid,
             "message": message or "Remote API Error",
             "remote_error": remote_error,
             "remote_message": remote_message,
@@ -97,6 +90,5 @@ class UnknownError(BaseError):
     def __init__(self, message=None):
         
         self.body = {
-            "error_uuid": self.uuid,
             "message": message or "UnknownError",
         }

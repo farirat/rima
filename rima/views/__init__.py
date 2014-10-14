@@ -2,7 +2,7 @@ from json import loads
 
 from tornado.web import RequestHandler
 
-# from rima.decorators import error_handler
+from rima.decorators import error_handler
 
 
 class BaseView(RequestHandler):
@@ -22,7 +22,7 @@ class BaseView(RequestHandler):
             }
         )
 
-    # @error_handler
+    @error_handler
     def get(self, uuid=None):
         """
         """

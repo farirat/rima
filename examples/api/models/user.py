@@ -1,5 +1,6 @@
 from rima.models import BaseModel
+from mongoengine import Document
 # from rima.models
 
-class UserModel(BaseModel):
+class UserModel(Document, BaseModel):
 	pass

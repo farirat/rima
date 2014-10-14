@@ -1,5 +1,5 @@
 from rima.controllers import BaseController
-from api.models import UserModel
+from models.user import UserModel
 
 
 class UserController(BaseController):
