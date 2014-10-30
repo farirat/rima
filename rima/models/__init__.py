@@ -17,14 +17,12 @@ connect("test_db")
 
 class BaseModel(object):
     """
+    Base Model Class.
     """
 
     uuid = UUIDField(default=uuid1)
-
-   
-    created_on = DateTimeField(default=datetime.datetime.now)
-    modified_on = DateTimeField()
-    delete_on = DateTimeField()
+    created_at = DateTimeField(default=datetime.datetime.now)
+    modified_at = DateTimeField()
 
     def to_dict(self):
         """
@@ -33,10 +31,10 @@ class BaseModel(object):
 
         return {
             "uuid": str(self.uuid),
-            "name": self.name,
+            # "name": self.name,
             
-            "created_at": str(self.created_on),
-            "modified_at": str(self.modified_on),
+            "created_at": str(self.created_at),
+            "modified_at": str(self.modified_at),
 
         }
 

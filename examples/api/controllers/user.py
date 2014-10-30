@@ -3,4 +3,4 @@ from models.user import UserModel
 
 
 class UserController(BaseController):
-	model = UserModel
+    model = UserModel

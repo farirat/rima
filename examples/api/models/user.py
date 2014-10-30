@@ -1,6 +1,9 @@
 from rima.models import BaseModel
-from mongoengine import Document
+from mongoengine import Document, StringField
 # from rima.models
 
+
 class UserModel(Document, BaseModel):
-	pass
+    """User Model class."""
+
+    name = StringField()

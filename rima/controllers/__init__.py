@@ -44,7 +44,7 @@ class BaseController(object):
 
         [
             validate(key, value)
-            for key, value in kwargs.iteritems()
+            for key, value in kwargs.items()
         ]
 
     @classmethod
@@ -139,7 +139,7 @@ class BaseController(object):
         if len(objs) == 1:
             obj = objs[0]
             kwargs = cls.pre_update(uuid, **kwargs)
-            for key, value in kwargs.iteritems():
+            for key, value in kwargs.items():
                 obj.__setattr__(key, value)
             obj.modified_on = datetime.datetime.now()
             kwargs["uuid"] = str(obj.uuid)

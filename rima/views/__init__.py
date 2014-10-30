@@ -25,10 +25,10 @@ class BaseView(RequestHandler):
     @error_handler
     def get(self, uuid=None):
         """
+        Lists all resources view or filter by UUID.
         """
         
         objs = self.controller.list(uuid=uuid)
-        # else:
 
         objs = {
             str(obj.uuid): obj.to_dict()
@@ -37,9 +37,10 @@ class BaseView(RequestHandler):
         self.set_header('Object-Count', len(objs))
         return objs
 
-    # @error_handler
-    def put(self):
+    @error_handler
+    def post(self):
         """
+        Creates new resource view.
         """
 
         data = loads(self.request.body.decode("utf-8"))
@@ -47,22 +48,21 @@ class BaseView(RequestHandler):
 
         return obj.render_to_response()
 
-    # @error_handler
-    def post(self):
+    @error_handler
+    def patch(self, uuid):
         """
+        Updates resource view
         """
         data = loads(self.request.body.decode("utf-8"))
 
-        uuid = list(data.keys())[0]
-        values = list(data.values())[0]
-        print(uuid, values)
-        obj = self.controller.update(uuid, **values)
+        obj = self.controller.update(uuid, **data)
 
         return obj.render_to_response()
 
-    # @error_handler
+    @error_handler
     def delete(self, uuid):
         """
+        Delete resource view.
         """
 
         obj = self.controller.delete(uuid=uuid)
