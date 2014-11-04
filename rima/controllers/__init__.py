@@ -8,20 +8,25 @@ from rima.exceptions import (
 
 
 class BaseController(object):
+    """
+    Base Controller Class.
+    """
 
     required_create_fields = []
+    create_fields = []
     # search_fields = []
     model = None
 
     @classmethod
-    def check_missing_parameters(cls, params_list, **kwargs):
+    def check_missing_parameters(cls, **kwargs):
         """
+        Checks missing required parameters.
         """
 
         if kwargs:
             data = {}
             missing_params = []
-            for param in params_list:
+            for param in cls.required_create_fields:
                 if param in kwargs:
                     data.update({param: kwargs.get(param)})
                 else:
@@ -36,6 +41,17 @@ class BaseController(object):
                 return data
         else:
             raise MissingParameterError("No params were passed")
+
+    @classmethod
+    def remove_extra_params(cls, **kwargs):
+        """
+        Removes all the extra parameters passed to the request body.
+        """
+        data = {}
+        for param in cls.required_create_fields + cls.create_fields:
+            if param in kwargs:
+                data.update({param: kwargs.get(param)})
+        return data
 
     @classmethod
     def validate_parameters(cls, **kwargs):
@@ -72,13 +88,11 @@ class BaseController(object):
     @classmethod
     def create(cls, **kwargs):
         """
+        Creates an object on the database.
         """
 
-        params = cls.check_missing_parameters(
-            cls.required_create_fields,
-            **kwargs
-        )
-        cls.validate_parameters(**params)
+        params = cls.check_missing_parameters(**kwargs)
+        # cls.validate_parameters(**params)
         cls.check_existence(**params)
         params = cls.pre_create(**params)
         obj = cls.model(**params)
